@@ -1,0 +1,118 @@
+/**
+
+*/
+:root {
+    --clr-primary: 0 0 255;
+    --clr-secondary: 0 128 0;
+    --clr-accent: 94 94 160;
+    --clr-light: 255 255 255;
+    --clr-dark: 3 3 17;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: rgb(var(--clr-dark));
+    margin: 0;
+    
+}
+
+h1 {
+    color: rgb(var(--clr-light));
+    text-align: center;
+}
+
+#app {
+    width: clamp(500px, 90%, 900px);
+    margin-top: 4rem;
+    margin-inline: auto;
+    padding: 2rem 2rem 10rem;
+    border: 2px solid gray;
+}
+
+.searchbar {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    color: white;
+}
+
+.search-btn {
+    flex-basis: 15%;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: .5rem;
+    cursor: pointer;
+    background-color: rgb(var(--clr-primary));
+    color: rgb(var(--clr-light));
+    font-weight: bold;
+}
+
+.remove {
+    flex-basis: 10%;
+    padding: 0.2rem 1rem;
+    border: none;
+    border-radius: .5rem;
+    cursor: pointer;
+    background-color: brown;
+    color: rgb(var(--clr-light));
+    font-weight: bold;
+}
+
+p {
+    text-align: center;
+    font-size: 30px;
+    color: white;
+    text-decoration: underline;
+}
+
+.search-btn:hover,
+.search-btn:focus {
+    background-color: rgb(var(--clr-accent));
+}
+
+input[type='text'] {
+    flex-basis: 80%;
+    padding-left: 1rem;
+    padding-block: .5rem;
+}
+
+input[type='text']:focus {
+    outline-color: rgb(var(--clr-accent));
+
+}
+
+#tasklist {
+    padding: 0;
+    list-style: none;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    border: 2px solid rgb(var(--clr-light));
+    border-radius: .5rem;
+    padding: 1rem 0.5rem;
+    color: rgb(var(--clr-light));
+    background-color: rgb(var(--clr-secondary) / 0.4);
+}
+
+.fas.fa-trash {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 700;
+    cursor: pointer;
+    color: red;
+}
+
+.isDo {
+    background-color: purple;
+}
+
+.task-item:not(:first-child) {
+    margin-top: 1rem;
+}

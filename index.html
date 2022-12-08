@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="https://unsplash.it/32/32" type="image/x-icon">
+    <link rel="stylesheet" href="./css/index.css">
+    <script src="https://kit.fontawesome.com/b48549a02e.js" crossorigin="anonymous"></script>
+    <script src="../../../vue3/vue.global.js"></script>
+    <title>TodoApp</title>
+</head>
+
+<body>
+    <div id="app">
+        <div class="header-container">
+            <h1>Todo App</h1>
+            <form action="#">
+                <div class="searchbar">
+                    <input type="text" name="search" id="search" v-model="textList">
+                    <button type="submit"  @click.prevent="addList" class="search-btn">Ajouter tâche</button>
+                    <button class="remove" v-on:click="deleteAll">All</button>
+                </div>
+                
+            </form>
+        </div>
+        <p>Liste des tâches</p>
+        <ul id="tasklist">
+            <li class="task-item" v-for="(element,index) in arrayList" :key="index" :class="{isDo:element.success}">
+                <div>
+                    <input type="checkbox" name="" id="" v-model="element.success">
+                    <span >{{element.text}}</span>
+                </div>
+                <i class="fas fa-trash" v-on:click="deleteLi(element)"></i>
+            </li>
+            
+            <!-- To be filled by JavaScript -->
+        </ul>
+    </div>
+    <script>
+        Vue.createApp({
+            data(){
+                return{
+                    textList:"",
+                    arrayList:[
+                        {text:"Aller à la messe",success:false}
+                    ],
+                    count:0
+                }                        
+            },
+            methods:{
+                addList(){
+                this.arrayList.push({text:this.textList,success:false});
+                this.textList = " ";
+                this.compter();
+                console.log(this.arrayList)
+                },
+                deleteLi(elementList){
+                    this.arrayList = this.arrayList.filter(el => el !=elementList);
+                    console.log(this.arrayList)
+                },
+                deleteAll(){
+                    this.arrayList = [];
+                    console.log(this.arrayList)
+                },
+                compter(){
+                     this.count++;
+                }
+            },
+            watch: {
+                count(newCount){
+                    alert("Tâche a été ajouter")
+                }
+            }
+        }).mount("#app")
+    </script>
+    <!-- <script src="./js/script.js"></script> -->
+</body>
+
+</html>
